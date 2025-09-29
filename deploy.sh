@@ -1,19 +1,15 @@
 #!/bin/bash
-# deploy.sh — quick commit & push script for 12palmresort repo
+# deploy.sh — commit & push to main, triggers deploy.yml workflow
 
-# Stop on errors
 set -e
 
-# Default commit message
+# Default commit message if none passed
 MESSAGE=${1:-"update"}
 
-# Add all changes
+# Stage, commit, and push
 git add .
-
-# Commit with message (use arg1 if provided, otherwise "update")
-git commit -m "$MESSAGE"
-
-# Push to main branch
+git commit -m "$MESSAGE" || echo "⚠️ Nothing to commit"
 git push origin main
 
-echo "✅ Changes pushed to GitHub (branch: main) with message: $MESSAGE"
+echo "✅ Pushed to main with message: $MESSAGE"
+echo "⏳ GitHub Actions workflow (deploy.yml) will now build & publish your site."
