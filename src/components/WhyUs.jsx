@@ -101,7 +101,7 @@ export default function WhyUs() {
           {/* right: image card */}
           <div className="relative overflow-hidden rounded-2xl border border-stone-200 bg-white/80 shadow-lg backdrop-blur">
             <img
-              src="/why-us.jpg" /* replace with a nice hotel image */
+              src={`${import.meta.env.BASE_URL}why-us.jpg`}/* replace with a nice hotel image */
               alt="Hotel highlight"
               className="h-full w-full max-h-[540px] object-cover"
             />

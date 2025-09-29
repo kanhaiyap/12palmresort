@@ -11,8 +11,8 @@ export const HOTEL = {
   
     // Use the coordinates from @... for embedding
     coords: { lat: 21.2847807, lng: 81.6959761 },
-  
-    heroImage: "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101f?q=80&w=1880&auto=format&fit=crop",
+    heroImage: `${import.meta.env.BASE_URL}hero.jpeg`,
+
     logoText: "Palm Resorts",
   };
   
@@ -67,15 +67,16 @@ export const HOTEL = {
         ];
     
     
-    export const GALLERY = [
-    "https://images.unsplash.com/photo-1505691723518-36a5ac3b2d95?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1551776235-dde6d4829808?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1200&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1554995207-c18c203602cb?q=80&w=1200&auto=format&fit=crop",
-    ];
-    
+ // FILE: src/config.js
+
+// Auto-import all images in src/assets/gallery/*.jpeg
+const galleryModules = import.meta.glob("./assets/gallery/*.jpeg", {
+    eager: true,
+    import: "default",
+  });
+  
+  export const GALLERY = Object.values(galleryModules);
+  
     
     export const TESTIMONIALS = [
     {
